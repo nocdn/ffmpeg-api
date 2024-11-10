@@ -52,12 +52,12 @@ def process_video(temp_files=None):
         return jsonify({'error': 'No output filename provided'}), 400
 
     try:
-        # Generate unique filenames
+        # Generate unique filenames for temporary storage only
         input_filename = secure_filename(str(uuid.uuid4()) + '_' + file.filename)
-        output_filename = secure_filename(str(uuid.uuid4()) + '_' + output_filename)
+        temp_output_filename = secure_filename(str(uuid.uuid4()) + '_' + output_filename)
 
         input_path = os.path.join(UPLOAD_FOLDER, input_filename)
-        output_path = os.path.join(UPLOAD_FOLDER, output_filename)
+        output_path = os.path.join(UPLOAD_FOLDER, temp_output_filename)
 
         # Add files to cleanup list
         temp_files.extend([input_path, output_path])
@@ -83,11 +83,11 @@ def process_video(temp_files=None):
                 'details': process.stderr
             }), 500
 
-        # Return processed file
+        # Return processed file with original requested filename
         return send_file(
             output_path,
             as_attachment=True,
-            download_name=output_filename
+            download_name=output_filename  # Use original output filename here
         )
 
     except Exception as e:
