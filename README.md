@@ -30,12 +30,12 @@ This API provides a simple `/process` endpoint that accepts a media file upload 
     ```
 
 3.  **Run the Docker Container**:
-    This command runs the container in detached mode (`-d`), maps the host's port 8040 to the container's port 8000 (where the API runs, you can change this port to whatever you want), and names the container `ffmpeg-api-container`. The `--restart=always` flag ensures the container restarts automatically if it stops.
+    This command runs the container in detached mode (`-d`), maps the host's port 8040 to the container's port 8080 (where the API runs, you can change this port to whatever you want), and names the container `ffmpeg-api-container`. The `--restart=always` flag ensures the container restarts automatically if it stops.
 
     ```bash
     docker run -d \
       --restart=always \
-      -p 8040:8000 \
+      -p 8040:8080 \
       --name ffmpeg-api-container \
       ffmpeg-api-img
     ```

@@ -33,11 +33,11 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy the rest of the application code
 COPY ./app /app/app
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Expose the port the app runs on (this is informational, but good practice)
+# Cloud Run uses the PORT env var, not this EXPOSE line directly
+EXPOSE 8080
 
 # Command to run the application using Uvicorn from the virtual environment
 # Use 0.0.0.0 to allow connections from outside the container
-# Add --reload for development ONLY, remove for production
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-# Development command: CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Reads the PORT environment variable provided by Cloud Run (defaults to 8080 if not set)
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}
