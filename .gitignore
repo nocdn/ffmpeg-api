@@ -1,3 +1,42 @@
-bin/*
-uploads/*
-__pycache__/*
+# Dependencies
+node_modules/
+
+# Build and coverage output
+coverage/
+dist/
+build/
+*.tsbuildinfo
+
+# Runtime and debug logs
+logs/
+*.log
+bun-debug.log*
+.bun-debug.log*
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local agent/editor metadata
+AGENTS.md
+AGENT.md
+CLAUDE.md
+agents.md
+agent.md
+claude.md
+.agents/
+.agent/
+.augment/
+.claude/
+.codex/
+.continue/
+.cursor/
+.firecrawl/

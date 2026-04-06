@@ -1,0 +1,25 @@
+node_modules/
+.git/
+.gitignore
+.dockerignore
+
+# Local config and docs not needed for the image build
+.env
+.env.local
+.env.*.local
+README.md
+compose.yaml
+docker-compose.yml
+AGENTS.md
+
+# Editor, OS, and tooling artifacts
+.DS_Store
+.idea/
+.vscode/
+.firecrawl/
+
+# Build and test output
+coverage/
+dist/
+build/
+*.log

@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ffmpeg-api-container
+    image: ffmpeg-api-container:local
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NODE_ENV: production
+    ports:
+      - "${PORT:-8040}:${PORT:-8040}"
+    restart: unless-stopped
